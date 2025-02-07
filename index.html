@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>Welcome, Sumit!</h1>
+            <button id="theme-toggle">🌙</button>
+        </header>
+
+        <!-- Clock & Date -->
+        <section class="clock-section">
+            <h2 id="time"></h2>
+            <p id="date"></p>
+        </section>
+
+        <!-- Weather Widget -->
+        <section class="weather">
+            <h2>Weather</h2>
+            <p id="weather">Loading...</p>
+        </section>
+
+        <!-- To-Do List -->
+        <section class="todo">
+            <h2>To-Do List</h2>
+            <div class="input-group">
+                <input type="text" id="task-input" placeholder="Add a new task">
+                <button onclick="addTask()">Add</button>
+            </div>
+            <ul id="task-list"></ul>
+        </section>
+
+        <!-- Motivational Quote -->
+        <section class="quote">
+            <h2>Quote of the Day</h2>
+            <p id="quote">Loading...</p>
+        </section>
+
+        <!-- Quick Links -->
+        <section class="quick-links">
+            <h2>Quick Links</h2>
+            <a href="https://github.com/" target="_blank">GitHub</a>
+            <a href="https://www.google.com/" target="_blank">Google</a>
+            <a href="https://www.freecodecamp.org/" target="_blank">freeCodeCamp</a>
+        </section>
+    </div>
+</body>
+</html>
