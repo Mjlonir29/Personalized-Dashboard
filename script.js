@@ -5,6 +5,7 @@ function updateClock() {
     document.getElementById("time").innerText = now.toLocaleTimeString();
     document.getElementById("date").innerText = now.toDateString();
 }
+
 setInterval(updateClock, 1000);
 updateClock();
 
