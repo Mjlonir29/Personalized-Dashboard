@@ -1,79 +1,91 @@
-// Digital Clock
-function updateClock() {
-    
-    const now = new Date();
-    document.getElementById("time").innerText = now.toLocaleTimeString();
-    document.getElementById("date").innerText = now.toDateString();
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
 
-setInterval(updateClock, 1000);
-updateClock();
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>Welcome, Sumit!</h1>
+            <button id="theme-toggle">🌙</button>
+        </header>
 
-// Weather Fetch (Replace 'YOUR_API_KEY' with a valid API key)
-async function fetchWeather() {
-    
-    const apiKey = "YOUR_API_KEY";  // Replace with your OpenWeather API key
-    const city = "New Delhi";  // Change to your city
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+        <!-- Clock & Date -->
+        <section class="clock">
+            <h2 id="time"></h2>
+            <p id="date"></p>
+        </section>
 
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
-        document.getElementById("weather").innerText = `${data.weather[0].main}, ${data.main.temp}°C`;
-    } catch (error) {
-        document.getElementById("weather").innerText = "Unable to fetch weather.";
-    }
-}
-fetchWeather();
+        <!-- Weather -->
+        <section class="weather">
+            <h2>Weather</h2>
+            <p id="weather">Loading...</p>
+            <img id="weather-icon" src="" alt="">
+            <p id="weather-details"></p>
+        </section>
 
-// To-Do List with Local Storage
-const taskInput = document.getElementById("task-input");
-const taskList = document.getElementById("task-list");
+        <!-- To-Do List -->
+        <section class="todo">
+            <h2>To-Do List</h2>
+            <div class="input-group">
+                <input type="text" id="task-input" placeholder="Add a new task">
+                <button onclick="addTask()">Add</button>
+            </div>
+            <ul id="task-list"></ul>
+        </section>
 
-function addTask() {
-    const taskText = taskInput.value.trim();
-    if (taskText) {
-        const li = document.createElement("li");
-        li.textContent = taskText;
-        li.addEventListener("click", () => li.remove());
-        taskList.appendChild(li);
-        saveTasks();
-        taskInput.value = "";
-    }
-}
+        <!-- Notes -->
+        <section class="notes">
+            <h2>Quick Notes</h2>
+            <textarea id="notes-area" placeholder="Write your notes here..."></textarea>
+            <button onclick="saveNotes()">Save Notes</button>
+        </section>
 
-function saveTasks() {
-    const tasks = [];
-    document.querySelectorAll("#task-list li").forEach(li => tasks.push(li.textContent));
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-}
+        <!-- Reminders -->
+        <section class="reminders">
+            <h2>Reminders</h2>
+            <input type="text" id="reminder-input" placeholder="Add a reminder">
+            <input type="time" id="reminder-time">
+            <button onclick="setReminder()">Set Reminder</button>
+            <ul id="reminder-list"></ul>
+        </section>
 
-function loadTasks() {
-    const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    savedTasks.forEach(task => {
-        const li = document.createElement("li");
-        li.textContent = task;
-        li.addEventListener("click", () => li.remove());
-        taskList.appendChild(li);
-    });
-}
-loadTasks();
+        <!-- Pomodoro Timer -->
+        <section class="pomodoro">
+            <h2>Pomodoro Timer</h2>
+            <p id="timer">25:00</p>
+            <button onclick="startPomodoro()">Start</button>
+            <button onclick="resetPomodoro()">Reset</button>
+        </section>
 
-// Fetch Motivational Quote
-async function fetchQuote() {
-    try {
-        const response = await fetch("https://api.quotable.io/random");
-        const data = await response.json();
-        document.getElementById("quote").innerText = `"${data.content}" - ${data.author}`;
-    } catch (error) {
-        document.getElementById("quote").innerText = "Stay positive and keep going!";
-    }
-}
-fetchQuote();
+        <!-- Calendar -->
+        <section class="calendar">
+            <h2>Calendar</h2>
+            <div id="calendar"></div>
+        </section>
 
-// Dark Mode Toggle
-const themeToggle = document.getElementById("theme-toggle");
-themeToggle.addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode");
-    themeToggle.innerText = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
-});
+        <!-- Quick Links -->
+        <section class="quick-links">
+            <h2>Quick Links</h2>
+            <div id="link-container">
+                <input type="text" id="link-name" placeholder="Enter name">
+                <input type="url" id="link-url" placeholder="Enter URL">
+                <button onclick="addLink()">Add</button>
+            </div>
+            <ul id="links-list">
+                <li><a href="https://github.com/" target="_blank">GitHub</a></li>
+                <li><a href="https://www.google.com/" target="_blank">Google</a></li>
+                <li><a href="https://www.freecodecamp.org/" target="_blank">freeCodeCamp</a></li>
+            </ul>
+        </section>
+
+    </div>
+
+</body>
+</html>
