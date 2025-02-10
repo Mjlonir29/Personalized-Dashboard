@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personalized Dashboard</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
-    
 <body>
-    
+
     <div class="container">
         <!-- Header -->
         <header>
@@ -40,6 +38,30 @@
             <ul id="task-list"></ul>
         </section>
 
+        <!-- Notes Section -->
+        <section class="notes">
+            <h2>Notes</h2>
+            <textarea id="notes" placeholder="Write your notes here..."></textarea>
+        </section>
+
+        <!-- Pomodoro Timer -->
+        <section class="pomodoro">
+            <h2>Pomodoro Timer</h2>
+            <p id="timer">25:00</p>
+            <button onclick="startPomodoro()">Start</button>
+            <button onclick="resetPomodoro()">Reset</button>
+        </section>
+
+        <!-- Reminders -->
+        <section class="reminders">
+            <h2>Reminders</h2>
+            <div class="input-group">
+                <input type="text" id="reminder-input" placeholder="Add a reminder">
+                <button onclick="addReminder()">Add</button>
+            </div>
+            <ul id="reminder-list"></ul>
+        </section>
+
         <!-- Motivational Quote -->
         <section class="quote">
             <h2>Quote of the Day</h2>
@@ -54,5 +76,6 @@
             <a href="https://www.freecodecamp.org/" target="_blank">freeCodeCamp</a>
         </section>
     </div>
+
 </body>
 </html>
