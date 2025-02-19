@@ -1,5 +1,6 @@
 // 🕒 Digital Clock
 function updateClock() {
+    
     const now = new Date();
     document.getElementById("time").innerText = now.toLocaleTimeString();
     document.getElementById("date").innerText = now.toDateString();
