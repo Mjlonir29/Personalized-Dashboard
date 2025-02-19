@@ -11,6 +11,7 @@ updateClock();
 
 // 🌤️ Weather Fetch (Replace 'YOUR_API_KEY' with a valid OpenWeather API key)
 async function fetchWeather() {
+    
     const apiKey = "YOUR_API_KEY"; // Add your OpenWeather API key
     const city = "New Delhi"; // Change to your city
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
